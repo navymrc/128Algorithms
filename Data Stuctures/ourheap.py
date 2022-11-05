@@ -26,4 +26,25 @@ class OurQueue:
             self.down(0)
         return root
 
+    def up(self, i):
+        x = self.heap[i]
+        p_i = self.parent(i)
+        while 0 < i < self.heap[p_i]:
+            p = self.heap[p_i]
+            self.heap[i] = self.heap[p_i]
+            self.heap[p_i] = self.heap[x]
+
+
+        pass
+
+    def parent(self, i):
+        """Binary three"""
+        return (i-1) // 2
+
+    def children(self, i):
+        """Binary three"""
+        return [(2*i)+1, 2*(i+1)]
+
+    def dow(self, i):
+        pass
 
