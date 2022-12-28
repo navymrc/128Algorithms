@@ -9,6 +9,6 @@ source env/bin/activate
 ## Packages
 
 ```bash
-pip install tryalgo numpy
+pip install tryalgo numpy pycodestyle
 ```
 
