@@ -70,6 +70,10 @@ class Matrix:
         p = other
         result = [[] for x in range(0, row)]
 
+        for i in range(0, row):
+            for j in range(0, col):
+                result[i].append(1)
+
         return None
 
     def __substaction(self, other):
