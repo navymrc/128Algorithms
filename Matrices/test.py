@@ -23,7 +23,7 @@ class Matrix:
         col, row = self.size.values()
         other_col, other_row = other.size.values()
 
-        return self.__multiplictation(other.value, {col: other_col, row: row}) if col == other_row else None
+        return self.__multiplictation(other.value, {'col': other_col, 'row': row}) if col == other_row else None
 
     def __str__(self):
         """Print Matrix as a nice formatted way."""
@@ -40,6 +40,9 @@ class Matrix:
             return self.__substaction(other.value)
         else:
             return None
+
+    def __eq__(self, other):
+        return self.value == other.value
 
     value = property(lambda self: self.M)
 
@@ -68,13 +71,14 @@ class Matrix:
         col, row = size_returned.values()
         o = self.M
         p = other
-        result = [[] for x in range(0, row)]
+        result = [[0 for x in range(0, col)] for x in range(0, row)]
 
         for i in range(0, row):
             for j in range(0, col):
-                result[i].append(1)
+                for h, item in enumerate(self.M[i]):
+                    result[i][j] += item * other[h][j]
 
-        return None
+        return result
 
     def __substaction(self, other):
         result = [[] for x in self.M]
@@ -107,11 +111,11 @@ class Matrix:
         return result
 
 
-A = Matrix([[3, 4, 2]])
-B = Matrix([[13, 9, 7, 15], [8, 7, 4, 6], [6, 4, 0, 3]])
+A = Matrix([[1, 2], [3, 4]])
+B = Matrix([[2, 0], [1, 2]])
 C = A - B
 D = A + B
-E = A * B
+E = B * A
+F = A == B
 scalar_result = A.scalar_multiplication(2)
-A.transpose()
-print("{0}\n{1}\n{2}".format(C, D, E))
+print("{0}\nA-B = {1}\nA+B = {2}\nA*B = {3}\nA==B = {4}".format(A, C, D, E, F))
