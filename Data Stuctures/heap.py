@@ -8,6 +8,12 @@ class OurHeap:
     """
 
     def __init__(self, heap=[]):
+        """
+        Default will be represented as a list.
+        Or you can also insert your heap in as a list
+        :param: heap: list[int]
+        :return: void
+        """
         self.heap = heap
 
     def __len__(self):
@@ -22,6 +28,11 @@ class OurHeap:
         return (current_index - 1) // 2
 
     def __down(self, index):
+        """
+        The action of down consists of an exchange between a node and its child with the smallest value.
+        :param index: int
+        :return: boolean or None
+        """
         a, b = self.__children(index)
         if a >= len(self.heap) or b >= len(self.heap):
             return False
@@ -43,6 +54,12 @@ class OurHeap:
         return self.heap
 
     def __up(self, index):
+        """
+        Up effects a series of exchanges of a node with its parents,
+        climbing up the tree until the heap order is respected.
+        :param index: int
+        :return: boolean or None
+        """
         parent = self.__parent(index)
         if parent < 0:
             return False
@@ -57,9 +74,18 @@ class OurHeap:
 
     @property
     def value(self):
+        """
+        Return the heap as a list.
+        :return: list[int]
+        """
         return self.heap
 
     def pop(self):
+        """
+        The minimal element is extracted with pop: the root is replaced by the last leaf in the heap,
+        and then the heap is reorganised to respect the heap order.
+        :return: int or None
+        """
         def init():
             self.__swap(0, len(self.heap)-1)
             z = self.heap.pop()
@@ -70,11 +96,23 @@ class OurHeap:
         return x
 
     def push(self, item):
+        """
+        A new element is added as the last leaf in the heap,
+        and then the heap is reorganised to respect the heap order.
+        :param item: int
+        :return: void
+        """
         self.heap.append(item)
         self.__up(len(self.heap) - 1)
 
     def update(self, index, item):
-        """"""
+        """
+        The method update permits the value of a heap element to be changed.
+        It then calls up or down to preserve the heap order.
+        :param index: int
+        :param item: int or float
+        :return: void or None
+        """
         if index < len(self.heap):
             self.heap[index] = item
             self.__up(index) if self.__parent(index) > item else self.__down(index)
@@ -86,4 +124,4 @@ A = OurHeap([2, 5, 7, 13, 9, 8, 30, 20, 17, 11, 12, 15])
 print(f"{A.value}\n{A.pop()}\n{A.value}")
 A.update(3, 0)
 A.push(6)
-print(f"{A.pop()}\n{A.value}")
+print(f"{A.pop()}\n{A.value}\n{help(A)}")
