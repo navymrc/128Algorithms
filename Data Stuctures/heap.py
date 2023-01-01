@@ -1,5 +1,11 @@
 class OurHeap:
-    """Binary Heap Priority"""
+    """
+    Binary Heap Priority
+    The structure contains an array heap.
+    The principal operations are push and pop. A new element is inserted with push.
+    The minimal element is extracted with pop.
+    The average complexity of the operations on our heap is O(logn); however, the worst-case complexity is O(n).
+    """
 
     def __init__(self, heap=[]):
         self.heap = heap
