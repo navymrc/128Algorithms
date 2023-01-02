@@ -1,10 +1,10 @@
-import collections
-from sys import stdin
+class UnionFind:
+    """
 
-width, height = map(int, stdin.readline().split())
+    """
+    def __init(self):
+        """
+        :param:
+        :return:
+        """
 
-var = "Hello world!"
-a = collections.Counter(var)
-arr = [(lambda: 0, lambda: 1)[letter == "o"]() for letter in var]
-print(arr)
-print(a)

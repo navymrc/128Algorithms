@@ -65,7 +65,7 @@ class Matrix:
             for j, arr_ in enumerate(arr):
                 result[i].append(j + other[i][j])
 
-        return result
+        return Matrix(result)
 
     def __multiplictation(self, other, size_returned):
         col, row = size_returned.values()
@@ -78,7 +78,7 @@ class Matrix:
                 for h, item in enumerate(self.M[i]):
                     result[i][j] += item * other[h][j]
 
-        return result
+        return Matrix(result)
 
     def __substaction(self, other):
         result = [[] for x in self.M]
@@ -87,7 +87,7 @@ class Matrix:
             for j, val in enumerate(arr):
                 result[i].append(val - other[i][j])
 
-        return result
+        return Matrix(result)
 
     def scalar_multiplication(self, constant):
         result = [[] for x in self.M]
@@ -97,7 +97,7 @@ class Matrix:
                 result[i].append(constant * val)
 
         self.M = result
-        return result
+        return Matrix(result)
 
     def transpose(self):
         col, row = self.size.values()
@@ -108,7 +108,7 @@ class Matrix:
                 result[i].append(item[i])
 
         self.M = result
-        return result
+        return Matrix(result)
 
 
 A = Matrix([[1, 2], [3, 4]])
