@@ -111,6 +111,7 @@ class OurHeap:
         It then calls up or down to preserve the heap order.
         :param index: int
         :param item: int or float
+        :rtype: None
         :return: void or None
         """
         if index < len(self.heap):
@@ -124,4 +125,4 @@ A = OurHeap([2, 5, 7, 13, 9, 8, 30, 20, 17, 11, 12, 15])
 print(f"{A.value}\n{A.pop()}\n{A.value}")
 A.update(3, 0)
 A.push(6)
-print(f"{A.pop()}\n{A.value}\n{help(A)}")
+print(f"{A.pop()}\n{A.value}")
